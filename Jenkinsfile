@@ -15,6 +15,7 @@ pipeline {
 			steps {
 				// sh "mvn --version"
 				// sh "node --version"
+				//test
 				echo "Build"
 				echo "$PATH"
 				echo "Build Numer - $env.BUILD_NUMBER"
