@@ -30,26 +30,31 @@ pipeline {
 				echo "Build URL - $env.BUILD_URL"
 			}
 		}
+		
 		stage('Compile') {
 			steps {
 				sh "mvn clean compile"
 			}
 		}
+
 		stage('Test') {
 			steps {
 				sh "mvn test"
 			}
 		}
+
 		stage('Integration Test') {
 			steps {
  				sh "mvn failsafe:integration-test failsafe:verify"
 			}
 		}
+
 		stage('Package') {
 			steps {
 				sh "mvn package -DskipTests"
 			}
 		}
+
 		stage('Build Docker Image') {
 			steps {
 				//docker build -t cloudkitas/currency-exchange-microservices:$env.BUILD_TAG
@@ -58,6 +63,7 @@ pipeline {
 				}
 			}
 		}
+
 		stage('Push Docker Image') {
 			steps {
 				script {
