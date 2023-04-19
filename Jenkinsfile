@@ -30,7 +30,7 @@ pipeline {
 				echo "Build URL - $env.BUILD_URL"
 			}
 		}
-		
+
 		stage('Compile') {
 			steps {
 				sh "mvn clean compile"
@@ -59,7 +59,7 @@ pipeline {
 			steps {
 				//docker build -t cloudkitas/currency-exchange-microservices:$env.BUILD_TAG
 				script {
-					dockerImage = docker.build(cloudkitas/currency-exchange-microservices:${env.BUILD_TAG})
+					dockerImage = docker.build("cloudkitas/currency-exchange-microservices:${env.BUILD_TAG}")
 				}
 			}
 		}
