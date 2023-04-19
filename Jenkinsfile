@@ -35,18 +35,17 @@ pipeline {
 				sh "mvn clean compile"
 			}
 		}
-		stage('Test'){
+		stage('Test') {
 			steps {
 				sh "mvn test"
 			}
 		}
-		
-		stage('Integration Test'){
+		stage('Integration Test') {
 			steps {
  				sh "mvn failsafe:integration-test failsafe:verify"
 			}
 		}
-		stage('Package'){
+		stage('Package') {
 			steps {
 				sh "mvn package -DskipTests"
 			}
@@ -66,7 +65,6 @@ pipeline {
 						dockerImage.push();
 						dockerImage.push('latest');
 					}
-					
 				}
 			}
 		}
